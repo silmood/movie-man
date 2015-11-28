@@ -8,6 +8,7 @@ import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import com.bumptech.glide.Glide;
 import com.silmood.movieman.R;
 import com.silmood.movieman.model.Movie;
 
@@ -85,6 +86,10 @@ public class TheatersMoviesAdapter extends RecyclerView.Adapter<TheatersMoviesAd
 
             String ratingFormatted = String.format(mContext.getString(R.string.format_rating),movie.getMetascore());
             mRating.setText(ratingFormatted);
+
+            Glide.with(mContext)
+                    .load(movie.getUrlPoster())
+                    .into(mPosterImage);
 
         }
     }

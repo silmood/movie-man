@@ -8,6 +8,7 @@ import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import com.bumptech.glide.Glide;
 import com.silmood.movieman.R;
 import com.silmood.movieman.model.Movie;
 
@@ -80,6 +81,10 @@ public class ComingSoonMoviesAdapter extends RecyclerView.Adapter<ComingSoonMovi
 
             String releaseDateFormatted = String.format(mContext.getString(R.string.format_release), movie.getReleaseDate());
             mReleaseDate.setText(releaseDateFormatted);
+
+            Glide.with(mContext)
+                    .load(movie.getUrlPoster())
+                    .into(mPosterImage);
         }
     }
 }

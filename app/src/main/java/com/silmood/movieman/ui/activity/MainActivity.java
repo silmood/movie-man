@@ -21,7 +21,7 @@ public class MainActivity extends AppCompatActivity {
 
         if (fragment == null){
             fm.beginTransaction()
-                    .add(R.id.container, new ComingSoonMoviesFragment())
+                    .add(R.id.container, new TheatersMoviesFragment())
                     .commit();
         }
     }
