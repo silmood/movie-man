@@ -52,7 +52,7 @@ public class ComingSoonMoviesFragment extends Fragment {
         List<Movie> movies = new ArrayList<>();
 
         for (int i = 0; i < 15; i++) {
-            Movie movie = new Movie("Movie " + i, "180 min.", "77/100", "http://ia.media-imdb.com/images/M/MV5BMjI2OTk5MzYyMl5BMl5BanBnXkFtZTgwMzY1MjE3NjE@._V1_SX214_AL_.jpg");
+            Movie movie = new Movie("Movie " + i, "2016-06-10");
             movies.add(movie);
         };
 

@@ -21,12 +21,18 @@ public class Movie {
     private String runtime;
     private String metascore;
     private String urlPoster;
+    private String mReleaseDate;
 
     public Movie(String title, String runtime, String metascore, String urlPoster) {
         this.title = title;
         this.runtime = runtime;
         this.metascore = metascore;
         this.urlPoster = urlPoster;
+    }
+
+    public Movie(String title, String releaseDate) {
+        this.title = title;
+        mReleaseDate = releaseDate;
     }
 
     public String getTitle() {
@@ -59,5 +65,9 @@ public class Movie {
 
     public void setUrlPosters(String urlPoster) {
         this.urlPoster = urlPoster;
+    }
+
+    public Object getReleaseDate() {
+        return mReleaseDate;
     }
 }
