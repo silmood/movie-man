@@ -32,21 +32,10 @@
             android:textStyle="bold"/>
 
         <TextView
-            android:id="@+id/label_duration"
+            android:id="@+id/label_release"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:maxLines="1"
-            android:text="Duration: 130 mins."
-            android:textColor="@color/white"
-            android:textSize="12sp"
-            android:textStyle="italic"/>
-
-        <TextView
-            android:id="@+id/label_rating"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:maxLines="1"
-            android:text="Rating: 9.7/10"
             android:textColor="@color/white"
             android:textSize="12sp"
             android:textStyle="italic"/>

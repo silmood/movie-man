@@ -65,27 +65,21 @@ public class ComingSoonMoviesAdapter extends RecyclerView.Adapter<ComingSoonMovi
 
         private ImageView mPosterImage;
         private TextView mTitle;
-        private TextView mDuration;
-        private TextView mRating;
+        private TextView mReleaseDate;
 
         public MovieViewHolder(View itemView) {
             super(itemView);
 
             mPosterImage = (ImageView) itemView.findViewById(R.id.image_movie);
             mTitle = (TextView) itemView.findViewById(R.id.label_name);
-            mDuration = (TextView) itemView.findViewById(R.id.label_duration);
-            mRating = (TextView) itemView.findViewById(R.id.label_rating);
+            mReleaseDate = (TextView) itemView.findViewById(R.id.label_release);
         }
 
         public void bindMovie(Movie movie) {
             mTitle.setText(movie.getTitle());
 
-            String durationFormatted = String.format(mContext.getString(R.string.format_duration), movie.getRuntime()[0]);
-            mDuration.setText(durationFormatted);
-
-            String ratingFormatted = String.format(mContext.getString(R.string.format_rating), movie.getMetascore());
-            mRating.setText(ratingFormatted);
-
+            String releaseDateFormatted = String.format(mContext.getString(R.string.format_release), movie.getReleaseDate());
+            mReleaseDate.setText(releaseDateFormatted);
         }
     }
 }
