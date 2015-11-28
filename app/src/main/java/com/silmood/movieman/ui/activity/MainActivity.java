@@ -7,6 +7,7 @@ import android.os.Bundle;
 
 import com.silmood.movieman.R;
 import com.silmood.movieman.ui.fragment.ComingSoonMoviesFragment;
+import com.silmood.movieman.ui.fragment.TheatersMoviesFragment;
 
 public class MainActivity extends AppCompatActivity {
 

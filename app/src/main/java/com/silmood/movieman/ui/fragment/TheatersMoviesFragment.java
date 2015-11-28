@@ -10,11 +10,16 @@ import android.view.View;
 import android.view.ViewGroup;
 
 import com.silmood.movieman.R;
+import com.silmood.movieman.rest.MoviesApiClient;
+import com.silmood.movieman.rest.response.MoviesResponse;
 import com.silmood.movieman.ui.adapter.TheatersMoviesAdapter;
 import com.silmood.movieman.model.Movie;
 
-import java.util.ArrayList;
 import java.util.List;
+
+import retrofit.Callback;
+import retrofit.Response;
+import retrofit.Retrofit;
 
 
 /**
@@ -39,20 +44,13 @@ public class TheatersMoviesFragment extends Fragment {
         mMoviesList = (RecyclerView) view.findViewById(R.id.list_theaters_movies);
         mMoviesList.setLayoutManager(new LinearLayoutManager(getActivity()));
 
-        updateUi(createDummyMovies());
-
         return view;
     }
 
-    private List<Movie> createDummyMovies() {
-        List<Movie> movies = new ArrayList<>();
-
-        for (int i = 0; i < 15; i++) {
-            Movie movie = new Movie("Movie " + i, "180 min.", "77/100", "http://ia.media-imdb.com/images/M/MV5BMjI2OTk5MzYyMl5BMl5BanBnXkFtZTgwMzY1MjE3NjE@._V1_SX214_AL_.jpg");
-            movies.add(movie);
-        };
-
-        return movies;
+    @Override
+    public void onResume() {
+        super.onResume();
+        fetchMovies();
     }
 
     private void updateUi(List<Movie> movies) {
@@ -68,4 +66,18 @@ public class TheatersMoviesFragment extends Fragment {
         }
     }
 
+    public void fetchMovies() {
+        MoviesApiClient.getInstance(getContext().getApplicationContext())
+                .getInTheatersMovies(new Callback<MoviesResponse>() {
+                    @Override
+                    public void onResponse(Response<MoviesResponse> response, Retrofit retrofit) {
+                        updateUi(response.body().getMovies());
+                    }
+
+                    @Override
+                    public void onFailure(Throwable t) {
+                        t.printStackTrace();
+                    }
+                });
+    }
 }

@@ -9,6 +9,8 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
+import com.silmood.movieman.rest.MoviesApiClient;
+import com.silmood.movieman.rest.response.MoviesResponse;
 import com.silmood.movieman.ui.adapter.ComingSoonMoviesAdapter;
 import com.silmood.movieman.R;
 import com.silmood.movieman.ui.util.SimpleOffsetDecorator;
@@ -16,6 +18,10 @@ import com.silmood.movieman.model.Movie;
 
 import java.util.ArrayList;
 import java.util.List;
+
+import retrofit.Callback;
+import retrofit.Response;
+import retrofit.Retrofit;
 
 /**
  * A simple {@link Fragment} subclass.
@@ -43,20 +49,28 @@ public class ComingSoonMoviesFragment extends Fragment {
         mMoviesList.setLayoutManager(new GridLayoutManager(getActivity(), SPAN_COUNT));
         mMoviesList.addItemDecoration(new SimpleOffsetDecorator(getActivity(), R.integer.offset));
 
-        updateUi(createDummyMovies());
-
         return view;
     }
 
-    private List<Movie> createDummyMovies() {
-        List<Movie> movies = new ArrayList<>();
+    @Override
+    public void onResume() {
+        super.onResume();
+        fetchMovies();
+    }
 
-        for (int i = 0; i < 15; i++) {
-            Movie movie = new Movie("Movie " + i, "180 min.", "77/100", "http://ia.media-imdb.com/images/M/MV5BMjI2OTk5MzYyMl5BMl5BanBnXkFtZTgwMzY1MjE3NjE@._V1_SX214_AL_.jpg");
-            movies.add(movie);
-        };
+    private void fetchMovies() {
+        MoviesApiClient.getInstance(getContext().getApplicationContext())
+                .getComingSoonResponse(new Callback<MoviesResponse>() {
+                    @Override
+                    public void onResponse(Response<MoviesResponse> response, Retrofit retrofit) {
+                        updateUi(response.body().getMovies());
+                    }
 
-        return movies;
+                    @Override
+                    public void onFailure(Throwable t) {
+                        t.printStackTrace();
+                    }
+                });
     }
 
     private void updateUi(List<Movie> movies) {

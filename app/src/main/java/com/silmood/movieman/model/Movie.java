@@ -18,16 +18,9 @@ package com.silmood.movieman.model;
 public class Movie {
 
     private String title;
-    private String runtime;
+    private String[] runtime;
     private String metascore;
     private String urlPoster;
-
-    public Movie(String title, String runtime, String metascore, String urlPoster) {
-        this.title = title;
-        this.runtime = runtime;
-        this.metascore = metascore;
-        this.urlPoster = urlPoster;
-    }
 
     public String getTitle() {
         return title;
@@ -37,11 +30,11 @@ public class Movie {
         this.title = title;
     }
 
-    public String getRuntime() {
+    public String[] getRuntime() {
         return runtime;
     }
 
-    public void setRuntime(String runtime) {
+    public void setRuntime(String[] runtime) {
         this.runtime = runtime;
     }
 

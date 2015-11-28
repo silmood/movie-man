@@ -80,7 +80,7 @@ public class ComingSoonMoviesAdapter extends RecyclerView.Adapter<ComingSoonMovi
         public void bindMovie(Movie movie) {
             mTitle.setText(movie.getTitle());
 
-            String durationFormatted = String.format(mContext.getString(R.string.format_duration), movie.getRuntime());
+            String durationFormatted = String.format(mContext.getString(R.string.format_duration), movie.getRuntime()[0]);
             mDuration.setText(durationFormatted);
 
             String ratingFormatted = String.format(mContext.getString(R.string.format_rating), movie.getMetascore());
