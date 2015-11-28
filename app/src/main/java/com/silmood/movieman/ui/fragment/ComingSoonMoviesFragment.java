@@ -13,6 +13,7 @@ import com.silmood.movieman.rest.MoviesApiClient;
 import com.silmood.movieman.rest.response.MoviesResponse;
 import com.silmood.movieman.ui.adapter.ComingSoonMoviesAdapter;
 import com.silmood.movieman.R;
+import com.silmood.movieman.ui.adapter.MoviesPagerAdapter;
 import com.silmood.movieman.ui.util.SimpleOffsetDecorator;
 import com.silmood.movieman.model.Movie;
 
@@ -26,7 +27,7 @@ import retrofit.Retrofit;
 /**
  * A simple {@link Fragment} subclass.
  */
-public class ComingSoonMoviesFragment extends Fragment {
+public class ComingSoonMoviesFragment extends Fragment implements MoviesPagerAdapter.PagerTitle {
 
 
     public static final int SPAN_COUNT = 2;
@@ -86,4 +87,9 @@ public class ComingSoonMoviesFragment extends Fragment {
         }
     }
 
+
+    @Override
+    public int getTitleStringId() {
+        return R.string.title_coming_soon;
+    }
 }

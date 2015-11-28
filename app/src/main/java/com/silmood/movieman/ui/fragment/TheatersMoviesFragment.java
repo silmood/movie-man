@@ -12,6 +12,7 @@ import android.view.ViewGroup;
 import com.silmood.movieman.R;
 import com.silmood.movieman.rest.MoviesApiClient;
 import com.silmood.movieman.rest.response.MoviesResponse;
+import com.silmood.movieman.ui.adapter.MoviesPagerAdapter;
 import com.silmood.movieman.ui.adapter.TheatersMoviesAdapter;
 import com.silmood.movieman.model.Movie;
 
@@ -25,7 +26,7 @@ import retrofit.Retrofit;
 /**
  * A simple {@link Fragment} subclass.
  */
-public class TheatersMoviesFragment extends Fragment {
+public class TheatersMoviesFragment extends Fragment implements MoviesPagerAdapter.PagerTitle {
 
     private RecyclerView mMoviesList;
     private TheatersMoviesAdapter mMoviesAdapter;
@@ -79,5 +80,11 @@ public class TheatersMoviesFragment extends Fragment {
                         t.printStackTrace();
                     }
                 });
+    }
+
+
+    @Override
+    public int getTitleStringId() {
+        return R.string.title_in_theaters;
     }
 }

@@ -6,4 +6,6 @@
     <string name="format_duration">Duration: %1s</string>
     <string name="format_rating">Rating: %1s</string>
     <string name="format_release">Release: %1s</string>
+    <string name="title_coming_soon">Coming soon</string>
+    <string name="title_in_theaters">In theaters</string>
 </resources>
